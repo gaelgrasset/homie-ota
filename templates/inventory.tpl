@@ -20,7 +20,7 @@
 <table border="1">
 <thead>
 <tr>
-  <th>online</th><th>last seen obline</th><th>signal</th><th>device</th><th>ipaddress</th><th>uptime</th><th>fwname</th><th>fwversion</th><th>name</th>
+  <th>online</th><th>last seen online</th><th>signal</th><th>device</th><th>ipaddress</th><th>uptime</th><th>fwname</th><th>fwversion</th><th>name</th>
 </tr>
 </thead>
 %for device in sorted(db):
