@@ -20,17 +20,19 @@
 <table border="1">
 <thead>
 <tr>
-  <th>online</th><th>signal</th><th>device</th><th>ipaddress</th><th>uptime</th><th>fwname</th><th>fwversion</th><th>name</th>
+  <th>online</th><th>last seen obline</th><th>signal</th><th>device</th><th>ipaddress</th><th>uptime</th><th>fwname</th><th>fwversion</th><th>name</th>
 </tr>
 </thead>
 %for device in sorted(db):
 <tr>
    <td class="online"><img src="{{base_url}}/{{db[device].get('online', 'false')}}.png"
-   		      alt="{{db[device].get('online', 'false')}}" /></td>
+   		      alt="{{db[device].get('online', 'false')}}" /></td>     
 
 %if db[device].get('online', 'false') == 'true':
+   <td>now</td>
    <td class="signal"><div class="pBar" data-from="0" data-to="{{ db[device].get('signal', 0) }}"></div></td>
 %else:
+   <td>{{db[device]['last_online']}}</td>
    <td class="signal"><div class="pBar" data-from="0" data-to="0"></div></td>
 %end
    <td class="device"><a href="{{base_url}}/device/{{device}}">{{device}}</a></td>

@@ -624,6 +624,11 @@ def on_control(mosq, userdata, msg):
 
         if key == 'uptime':
             db[device]['human_uptime'] = uptime( db[device].get('uptime', 0) )
+
+        # Logs time in a readable format (in case of device is offline, we keep the last time we saw it online from the Homie-OTA Server)
+        ts = time.gmtime()
+        db[device]['last_online'] = time.strftime("%Y-%m-%d %H:%M:%S", ts)
+        
     except Exception as e:
         logging.error("Cannot extract control device/data: for %s: %s" % (str(msg.topic), str(e)))
 
